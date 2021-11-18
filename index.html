@@ -29,7 +29,6 @@ $(document).ready(function () {
       data.push([t, 1000.000]);
       var date_win_min = t.getTime();
       var date_win_max = date_win_min + 2*taxis_increment;
-      $("#RR").html(connection.write("setInterval(function() {Bluetooth.println(getRR().toFixed(3));} ,2000); \n", function() { }););
       var g = new Dygraph(document.getElementById("div_g"), data,
                           {
                             drawPoints: true,
@@ -70,6 +69,10 @@ $(document).ready(function () {
                   rec_flag = true;
                   rec_startstop.textContent= "Stop Recording";
             };     
+      }
+      function respiratory_rate()
+      {    
+            $("$RR").html(connection.write("setInterval(function() {Bluetooth.println(getRR().toFixed(3));} ,2000); \n", function() { });)
       }
       function bluetooth_connect() {
             Puck.connect(function(c) {
@@ -123,6 +126,7 @@ $(document).ready(function () {
       xconnect.addEventListener("click", function () { bluetooth_connect() } );
       savemy_CSV.addEventListener("click", function () { savemyCSV() } );
       rec_startstop.addEventListener("click", function () { startstop_record() } );
+      rec_startstop.addEventListener("click", function () { respiratory_rate() } );
     }); 
 </script>
 </body>
