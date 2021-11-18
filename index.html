@@ -12,6 +12,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.css" />
 </head>
 <body>
 <div id="div_g" style="width:1200px; height:600px;"></div>
+<h2>Respiratory Rate:</h2>
+<h2 id="RR"></h2>
 <p>v1.0.1</p>
 <script type="text/javascript">
 $(document).ready(function () {
@@ -26,7 +28,8 @@ $(document).ready(function () {
       var t = new Date();
       data.push([t, 1000.000]);
       var date_win_min = t.getTime();
-      var date_win_max = date_win_min + 2*taxis_increment;   
+      var date_win_max = date_win_min + 2*taxis_increment;
+      $("#RR").html("Respiratory Rate");
       var g = new Dygraph(document.getElementById("div_g"), data,
                           {
                             drawPoints: true,
