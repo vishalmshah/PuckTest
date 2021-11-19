@@ -14,7 +14,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.css" />
 <div id="div_g" style="width:1200px; height:600px;"></div>
 <h2>Respiratory Rate (Hz):</h2>
 <h2 id="RR"></h2>
-<p>v1.0.3</p>
+<p>v1.0.4</p>
 <script type="text/javascript">
 $(document).ready(function () {
       var data = [];
@@ -60,7 +60,7 @@ $(document).ready(function () {
                   connection.write("clearInterval(1)\n", function() { });
             } else {
                   data.splice(0,data.length);
-                  connection.write("setInterval(function() {Bluetooth.println(main().toFixed(3));} ,1000); \n", function() { });
+                  connection.write("setInterval(function() {Bluetooth.println(main().toFixed(3));} ,100); \n", function() { });
                   t = new Date();
                   start_time = t;
                   var date_win_min = t.getTime();
